@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 
 export const CounterApp = ( { value } ) => {
     
-    console.log( 'render' );
+    // console.log( 'render' );
 
     // hook - useState
     const [ counter, setCounter ] = useState( value );
