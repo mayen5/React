@@ -1,0 +1,3 @@
+[submodule "06-mis-custom-hooks"]
+	path = 06-mis-custom-hooks
+	url = https://github.com/mayen5/custom-hooks.git
