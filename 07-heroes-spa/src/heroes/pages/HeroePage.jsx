@@ -1,12 +1,18 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { useMemo } from 'react';
+import { Navigate, useNavigate, useParams } from 'react-router-dom';
 import { getHeroeById } from '../helpers';
 
 export const HeroePage = () => {
 
 
     const { id } = useParams();
+    const navigate = useNavigate();
 
-    const heroe = getHeroeById(id);
+    const heroe = useMemo(() => getHeroeById(id), [id]);
+
+    const onNavigateBack = () => {
+        navigate(-1);
+    }
 
     if (!heroe) {
         return <Navigate to="/marvel" />;
@@ -22,7 +28,7 @@ export const HeroePage = () => {
                 />
             </div>
 
-            <div className="col-8">
+            <div className="col-8 animate__animated animate__fadeInRight">
                 <h3>{heroe.superhero}</h3>
                 <ul className="list-group list-group-flush">
                     <li className="list-group-item"><b>Alter ego:</b> {heroe.alter_ego}</li>
@@ -35,7 +41,7 @@ export const HeroePage = () => {
 
                 <button
                     className="btn btn-outline-info"
-                    onClick={() => window.history.back()}
+                    onClick={onNavigateBack}
                 >
                     Return
                 </button>
